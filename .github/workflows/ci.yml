@@ -81,7 +81,8 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           push: true
-          tags: acevedor/$PROJECT_ID:$GITHUB_SHA
+          tags: acevedor/quarkus-sanbox:0.0.1
+          #tags: acevedor/$PROJECT_ID:$GITHUB_SHA
       # Set up kustomize
       - name: Set up Kustomize
         run: |-
