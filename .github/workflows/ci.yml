@@ -38,6 +38,15 @@ jobs:
         #args: # optional
         # Set the sonar.projectBaseDir analysis property
         #projectBaseDir: # optional, default is .
+    - name: Cache 'target' build directory
+      uses: actions/cache@v2
+      env:
+        cache-name: cache-target
+      with:
+        path: ./target
+        key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
+        restore-keys: |
+          ${{ runner.os }}-maven-
 
   package-push-and-deploy:
     name: publish and deploy
