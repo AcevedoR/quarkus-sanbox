@@ -1,6 +1,6 @@
 # quarkus-sanbox project
 
-/bin/bash: line 1: q: command not found
+personal sandbox to test stuff
 
 This project uses Quarkus, the Supersonic Subatomic Java Framework  https://quarkus.io/
 
