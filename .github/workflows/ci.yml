@@ -40,8 +40,9 @@ jobs:
         #projectBaseDir: # optional, default is .
 
   package-push-and-deploy:
-    name: Setup, Build, Publish, and Deploy
+    name: publish and deploy
     runs-on: ubuntu-latest
+    needs: build
 
     steps:
       - name: Checkout
