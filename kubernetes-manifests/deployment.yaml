@@ -11,12 +11,11 @@ spec:
   template:
     metadata:
       labels:
-        app: quarkus-sanbox
+        app: quarkus-sanbox-deployment
     spec:
       containers:
         - name: quarkus-sanbox
-          # Replace $GCLOUD_PROJECT with your project ID
-          image: acevedor/quarkus-sanbox:0.0.1
+          image: acevedor/IMAGE_TO_OVERRIDE:TAG
           # This app listens on port 8080 for web traffic by default.
           ports:
             - containerPort: 8080
