@@ -69,6 +69,7 @@ jobs:
             --tag "acevedor/$PROJECT_ID:$GITHUB_SHA" \
             --build-arg GITHUB_SHA="$GITHUB_SHA" \
             --build-arg GITHUB_REF="$GITHUB_REF" \
+            -f ./src/main/docker/Dockerfile.jvm
             .
       # Push the Docker image to Google Container Registry
       - name: Publish
