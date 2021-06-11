@@ -2,7 +2,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: quarkus-sanbox
+  name: quarkus-sanbox-deployment
 spec:
   replicas: 1
   selector:
@@ -11,7 +11,7 @@ spec:
   template:
     metadata:
       labels:
-        app: quarkus-sanbox-deployment
+        app: quarkus-sanbox
     spec:
       containers:
         - name: quarkus-sanbox
