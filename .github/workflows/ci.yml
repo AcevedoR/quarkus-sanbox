@@ -94,5 +94,5 @@ jobs:
         run: |-
           ./kustomize edit set image acevedor/IMAGE_TO_OVERRIDE:TAG=acevedor/quarkus-sanbox:$NEW_VERSION
           ./kustomize build . | kubectl apply -f -
-          kubectl rollout status deployment/$DEPLOYMENT_NAME
+          kubectl rollout restart deployment/$DEPLOYMENT_NAME
           kubectl get services -o wide
