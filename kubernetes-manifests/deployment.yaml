@@ -16,6 +16,7 @@ spec:
       containers:
         - name: quarkus-sanbox
           image: acevedor/IMAGE_TO_OVERRIDE:TAG
+          imagePullPolicy: Always
           # This app listens on port 8080 for web traffic by default.
           ports:
             - containerPort: 8080
