@@ -15,7 +15,7 @@ class GreetingResourceTest {
           .when().get("/api/hello")
           .then()
              .statusCode(200)
-             .body(is("Hello RESTEasy running on GKE"));
+             .body(is("Hello RESTEasy running on GKE !"));
     }
 
 }
