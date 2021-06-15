@@ -14,7 +14,6 @@ env:
   GKE_CLUSTER: cluster-1
   GKE_ZONE: europe-west1-b
   DEPLOYMENT_NAME: quarkus-sanbox-deployment
-  NEW_VERSION: 0.0.1
 
 jobs:
   build:
@@ -29,16 +28,6 @@ jobs:
         distribution: 'adopt'
     - name: Build with Maven
       run: mvn -B package --file pom.xml
-
-#    - name: Official SonarQube Scan
-      # You may pin to the exact commit or the version.
-      # uses: SonarSource/sonarqube-scan-action@069e3332cbefb8659c02d77b21a04719d3ef7c9b
-#      uses: SonarSource/sonarqube-scan-action@v1.0.0
-      #with:
-        # Additional arguments to the sonar-scanner
-        #args: # optional
-        # Set the sonar.projectBaseDir analysis property
-        #projectBaseDir: # optional, default is .
     - name: Cache 'target' build directory
       uses: actions/cache@v2
       env:
@@ -82,8 +71,7 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           push: true
-          tags: acevedor/quarkus-sanbox:0.0.1
-          #tags: acevedor/$PROJECT_ID:$GITHUB_SHA
+          tags: acevedor/quarkus-sanbox:$GITHUB_SHA
       # Set up kustomize
       - name: Set up Kustomize
         run: |-
@@ -92,7 +80,7 @@ jobs:
       # Deploy the Docker image to the GKE cluster
       - name: Deploy
         run: |-
-          ./kustomize edit set image acevedor/IMAGE_TO_OVERRIDE:TAG=acevedor/quarkus-sanbox:$NEW_VERSION
+          ./kustomize edit set image acevedor/IMAGE_TO_OVERRIDE:TAG=acevedor/quarkus-sanbox:$GITHUB_SHA
           ./kustomize build . | kubectl apply -f -
           kubectl rollout restart deployment/$DEPLOYMENT_NAME
           kubectl get services -o wide
